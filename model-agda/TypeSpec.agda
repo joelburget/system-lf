@@ -281,6 +281,33 @@ data τF ( fv : Nat) : Set where
 eraseTypes : ∀ {fv} -> τ fv -> τF fv
 eraseTypes = {!!}
 
+data _τ≡_ : ∀ {fv : Nat} (a b : τS fv) : Set where
+
+distributeNeg1 : ∀ {tys} -> ¬(⊗ tys) τ≡ par (map ¬ tys)
+distributeNeg1 = ?
+
+distributeNeg2 : ∀ {tys} -> ¬(par tys) τ≡ ⊗ (map ¬ tys)
+distributeNeg2 = ?
+
+distributeNeg3 : ∀ {tys} -> ¬(⊕ tys) τ≡ choice (map ¬ tys)
+distributeNeg3 = ?
+
+distributeNeg4 : ∀ {tys} -> ¬(choice tys) τ≡ ⊕ (map ¬ tys)
+distributeNeg4 = ?
+
+
+unitProp1 : ¬(⊗ []) τ≡ par []
+unitProp1 = distributeNeg1
+
+unitProp2 : ¬(par []) τ≡ ⊗ []
+unitProp2 = distributeNeg2
+
+unitProp3 : ¬(⊕ []) τ≡ choice []
+unitProp3 = distributeNeg3
+
+unitProp4 : ¬(choice []) τ≡ ⊕ []
+unitProp4 = distributeNeg4
+
 --
 --- for
 
